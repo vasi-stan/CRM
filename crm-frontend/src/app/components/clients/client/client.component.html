@@ -1,0 +1,126 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button color="primary" (click)="newClient()" mat-raised-button routerLinkActive="active">Client nou</button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<!--list-->   
+    <mat-card *ngIf="list; else elseBlock" class="bg-secondary bg-gradient">
+        <mat-form-field class="ms-5" appearance="standard">
+            <mat-label>Search</mat-label>
+            <input (keyup)="applyFilter($event)" matInput>
+            </mat-form-field>
+            
+            <div class="mat-elevation-z8 gri">
+                <table mat-table class="gri" [dataSource]="tempClients">
+              
+                  
+                  <ng-container matColumnDef="nume">
+                    <th mat-header-cell *matHeaderCellDef class="nume"> Nume </th>
+                    <td mat-cell *matCellDef="let element"> {{element.nume_client}} </td>
+                  </ng-container>
+              
+                  
+                  <ng-container matColumnDef="localitate">
+                    <th mat-header-cell *matHeaderCellDef class="localitate"> Localitate </th>
+                    <td mat-cell *matCellDef="let element"> {{element.localitate}} </td>
+                  </ng-container>
+              
+                  
+                  <ng-container matColumnDef="judet">
+                    <th mat-header-cell *matHeaderCellDef class="judet"> Judet </th>
+                    <td mat-cell *matCellDef="let element"> {{element.judet}} </td>
+                  </ng-container>
+            
+                  <ng-container matColumnDef="note">
+                    <th mat-header-cell *matHeaderCellDef class="note"> Note </th>
+                    <td mat-cell *matCellDef="let element"> {{element.note_client}} </td>
+                  </ng-container>
+            
+                  <ng-container matColumnDef="industrie">
+                    <th mat-header-cell *matHeaderCellDef class="industrie"> Industrie </th>
+                    <td mat-cell *matCellDef="let element"> {{element.industrie}} </td>
+                  </ng-container>
+            
+                  <ng-container matColumnDef="modalitate_plata">
+                    <th mat-header-cell *matHeaderCellDef class="modalitate_plata"> Modalitate plata </th>
+                    <td mat-cell *matCellDef="let element"> {{element.modalitate_plata}} </td>
+                  </ng-container>
+            
+                  <ng-container matColumnDef="note_plata">
+                    <th mat-header-cell *matHeaderCellDef class="note_plata"> Note plata </th>
+                    <td mat-cell *matCellDef="let element"> {{element.note_plata}} </td>
+                  </ng-container>
+            
+                  <ng-container [matColumnDef]="'actions'">
+                    <th mat-header-cell *matHeaderCellDef class="actions"> Actions </th>
+                    <td mat-cell *matCellDef="let element" class="actions">
+                      <button mat-icon-button (click)="editareClient(element)">
+                        <mat-icon mat-icon-button color='primary'>edit</mat-icon>
+                      </button>
+                      <button mat-icon-button (click)="delete(element['id'])">
+                        <mat-icon mat-icon-button color="warn">delete</mat-icon>
+                      </button>
+                    </td>
+                  </ng-container>
+              
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+              </div>
+            
+            </mat-card>
+        
+<!-- edit-->
+<ng-template #elseBlock>
+
+
+<mat-card>
+  <mat-card-title>{{this.titlu}}</mat-card-title>
+  <mat-card-subtitle>
+    <mat-form-field class="ms-5" appearance="standard">
+      <mat-label>Nume Client</mat-label>
+      <input matInput [(ngModel)]="client.nume_client" name="client.nume_client">
+    </mat-form-field>
+  
+    <mat-form-field class="ms-5" appearance="standard">
+      <mat-label>Judet</mat-label>
+      <input matInput [(ngModel)]="client.judet" name="client.judet">
+    </mat-form-field>
+
+    <mat-form-field class="ms-5" appearance="standard">
+      <mat-label>Localitate</mat-label>
+      <input matInput [(ngModel)]="client.localitate" name="client.localitate">
+    </mat-form-field>
+  
+
+  
+    <mat-form-field class="ms-5"appearance="standard">
+      <mat-label>Note</mat-label>
+      <input matInput [(ngModel)]="client.note_client" name="client.note_client">
+    </mat-form-field>
+  
+    <mat-form-field class="ms-5" appearance="standard">
+      <mat-label>Industrie</mat-label>
+      <input matInput [(ngModel)]="client.industrie" name="client.industrie">
+    </mat-form-field>
+  
+    <mat-form-field class="ms-5" appearance="standard">
+      <mat-label>modalitate_plata</mat-label>
+      <input matInput [(ngModel)]="client.modalitate_plata" name="client.modalitate_plata">
+    </mat-form-field>
+  
+    <mat-form-field class="ms-5" appearance="standard">
+      <mat-label>note_plata</mat-label>
+      <input matInput [(ngModel)]="client.note_plata" name="client.note_plata">
+    </mat-form-field>      
+    <mat-card-actions>
+        <button color="primary" (click)="salvare()" mat-raised-button>Salvare</button>
+        <button color="primary" (click)="cancel()" mat-raised-button>Cancel</button>
+    </mat-card-actions>
+
+</mat-card-subtitle>
+  
+
+</mat-card>
+</ng-template>

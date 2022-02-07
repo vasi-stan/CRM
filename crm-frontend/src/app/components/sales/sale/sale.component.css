@@ -1,0 +1,96 @@
+.tabel {
+    width: 100%;
+    height: 40em;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.ms-5 {
+    margin-right: 20px;
+}
+.mat-column-data {
+    text-align: center;
+    border-right: 1px solid currentColor;
+    padding: 10px;
+}
+.mat-column-client {
+    text-align: center;
+    border-right: 1px solid currentColor;
+    padding: 10px;
+}
+.mat-column-contact {
+    text-align: center;
+    border-right: 1px solid currentColor;
+    padding: 10px;
+}
+.mat-column-produse {
+    text-align: center;
+    border-right: 1px solid currentColor;
+    padding: 10px;
+}
+.mat-column-valoare_fara_tva {
+    text-align: right;
+    border-right: 1px solid currentColor;
+    padding: 10px;
+}
+.mat-column-valoare_cu_tva {
+    text-align: right;
+    border-right: 1px solid currentColor;
+    padding: 10px;
+}
+.mat-column-procent_comision {
+    text-align: center;
+    border-right: 1px solid currentColor;
+    padding: 10px;
+}
+.mat-column-data_livrare {
+    text-align: center;
+    border-right: 1px solid currentColor;
+    padding: 10px;
+}
+.mat-column-data_plata {
+    text-align: center;
+    border-right: 1px solid currentColor;
+    padding: 10px;
+}
+.mat-column-luna_comision {
+    text-align: center;
+    border-right: 1px solid currentColor;
+    padding: 10px;
+}
+.mat-column-platit {
+    text-align: center;
+    border-right: 1px solid currentColor;
+    padding: 10px;
+}
+.mat-column-zile_plata {
+    text-align: center;
+    border-right: 1px solid currentColor;
+    padding: 10px;
+}
+.mat-column-tichete {
+    text-align: center;
+    border-right: 1px solid currentColor;
+    padding: 10px;
+}
+.mat-column-note {
+    text-align: center;
+    border-right: 1px solid currentColor;
+    padding: 10px;
+}
+.mat-column-actions {
+    text-align: center;
+    border-right: 1px solid currentColor;
+    padding: 10px;
+}
+.mat-header-cell {
+    font-weight: bold;
+    font-size: 15px;
+}
+.buton {
+    margin: 8px 50px 8px 0;
+    color: white;
+}
+.total {
+    margin: 20px;
+    font-size: large;
+}

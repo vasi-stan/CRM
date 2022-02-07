@@ -1,0 +1,143 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button color="primary" (click)="newVisit()" mat-raised-button routerLinkActive="active">Vizita noua</button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<!--list-->   
+    <mat-card *ngIf="list; else elseBlock" class="bg-secondary bg-gradient">
+    <mat-form-field class="ms-5" appearance="standard">
+    <mat-label>Search</mat-label>
+    <input (keyup)="applyFilter($event)" matInput>
+    </mat-form-field>
+    
+    <div class="mat-elevation-z8 gri">
+        <table mat-table class="gri" [dataSource]="tempVisits">
+      
+          
+            <ng-container matColumnDef="data">
+                <th mat-header-cell *matHeaderCellDef> Data </th>
+                <td mat-cell *matCellDef="let element"> {{element.data_creare_activity | date:'dd-MMM-yy'}} </td>
+              </ng-container>
+          
+              
+              <ng-container matColumnDef="client">
+                <th mat-header-cell *matHeaderCellDef> Client </th>
+                <td mat-cell *matCellDef="let element"> {{element.nume_client}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="contact">
+                <th mat-header-cell *matHeaderCellDef> Contact </th>
+                <td mat-cell *matCellDef="let element"> {{element.nume_contact}} </td>
+              </ng-container>
+          
+              
+              <ng-container matColumnDef="tip_activitate">
+                <th mat-header-cell *matHeaderCellDef> Tip activitate </th>
+                <td mat-cell *matCellDef="let element"> {{element.tip_activitate}} </td>
+              </ng-container>
+          
+              
+          
+              <ng-container matColumnDef="note">
+                <th mat-header-cell *matHeaderCellDef> Note </th>
+                <td mat-cell *matCellDef="let element"> {{element.note_activity}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="promotionale">
+                <th mat-header-cell *matHeaderCellDef> Promotionale </th>
+                <td mat-cell *matCellDef="let element"> {{element.promotionale}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="recontactare">
+                <th mat-header-cell *matHeaderCellDef> Recontactare </th>
+                <td mat-cell *matCellDef="let element"> {{element.recontactare}} </td>
+              </ng-container>
+          
+   
+              <ng-container [matColumnDef]="'actions'">
+                <th mat-header-cell *matHeaderCellDef> Actions </th>
+                <td mat-cell *matCellDef="let element">
+                  <button mat-icon-button (click)="editareVisit(element)">
+                    <mat-icon mat-icon-button color='primary'>edit</mat-icon>
+                  </button>
+                  <button mat-icon-button (click)="delete(element['id'])">
+                    <mat-icon mat-icon-button color="warn">delete</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+          
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+      </div>
+    
+    </mat-card>
+<!-- edit-->
+<ng-template #elseBlock>
+
+
+<mat-card>
+  <mat-card-title>{{this.titlu}}</mat-card-title>
+  <mat-card-subtitle>
+    <mat-form-field class="ms-5" appearance="standard">
+        <mat-label>Data</mat-label>
+        <input matInput [matDatepicker]="picker1" [(ngModel)]="visit.data_creare_activity" name="visit.data_creare_activity">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+  
+      <mat-form-field class="ms-5" appearance="fill">
+        <mat-label>Client</mat-label>
+        <mat-select [(ngModel)] = "visit.client_id" name="value">
+          <mat-option *ngFor="let client of clients" [value]="client.id">
+            {{client.nume_client}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    
+      <mat-form-field class="ms-5" appearance="fill">
+        <mat-label>Contact</mat-label>
+        <mat-select [(ngModel)] = "visit.contact_id" name="value">
+          <mat-option *ngFor="let contact of contacts" [value]="contact.id">
+            {{contact.nume_contact}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+   
+  
+  
+      <mat-form-field class="ms-5" appearance="standard">
+        <mat-label>Tip activitate</mat-label>
+        <input matInput [(ngModel)]="visit.tip_activitate" name="visit.tip_activitate">
+      </mat-form-field>
+    
+  
+    
+      <mat-form-field class="ms-5" appearance="standard">
+        <mat-label>Note</mat-label>
+        <input matInput [(ngModel)]="visit.note_activity" name="visit.note_activity">
+      </mat-form-field>
+    
+      <mat-form-field class="ms-5" appearance="standard">
+        <mat-label>Promotionale</mat-label>
+        <input matInput [(ngModel)]="visit.promotionale" name="visit.promotionale">
+      </mat-form-field>
+  
+      <mat-form-field class="ms-5" appearance="standard">
+        <mat-label>Recontactare</mat-label>
+        <input matInput [matDatepicker]="picker2" [(ngModel)]="visit.recontactare" name="visit.recontactare">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>      
+          <mat-card-actions>
+              <button color="primary" (click)="salvare()" mat-raised-button>Salvare</button>
+              <button color="primary" (click)="cancel()" mat-raised-button>Cancel</button>
+          </mat-card-actions>
+      
+  </mat-card-subtitle>
+  
+
+</mat-card>
+</ng-template>
+
