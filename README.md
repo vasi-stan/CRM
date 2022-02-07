@@ -3,6 +3,6 @@ My CRM app is divided in two sections:
 - front-end - built with Angular.
 
 Into an old laptop I've installed fedora 35.
-Angular is running into apache server, Spring is launched from command line.
+Angular is running into apache server.
 
 I still need to add auth section witch is in progress.
